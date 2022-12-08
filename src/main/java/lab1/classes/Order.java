@@ -20,6 +20,8 @@ public class Order {
     private LocalDateTime createdAt;
     private int tableNumber;
     private Type type;
+    private Employee employee;
+    public Employee getEmployee(){ return employee;}
     private List<Employee> employees;
     public List<Employee> getEmployees() {
         return employees;
@@ -35,6 +37,8 @@ public class Order {
     public void setDishId(int dishId) {
         this.dishId = dishId;
     }
+
+    public void setEmployee(Employee employee){this.employee = employee;}
 
     public int getEmployeeId() {
         return employeeId;

@@ -24,11 +24,11 @@ public class Dish {
 
     private int dishId;
 
-    public String getDish_name() {
+    public String getDishName() {
         return dishName;
     }
 
-    public void setDish_name(String dishName) {
+    public void setDishName(String dishName) {
         this.dishName = dishName;
     }
 

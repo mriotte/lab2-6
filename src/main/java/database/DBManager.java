@@ -10,7 +10,7 @@ public class DBManager implements AutoCloseable {
     private final String username;
     private final String password;
 
-    private Connection connection;
+    public Connection connection;
 
     public DBManager(String url, String username, String password) {
         this.url = url;
