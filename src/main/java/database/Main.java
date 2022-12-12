@@ -110,8 +110,8 @@ public class Main {
         System.out.println("SELECT DISH BY GROUP - soup");
         System.out.println(orderWrapper.getDishByDishGroup("soup"));
 
-        System.out.println("SELECT DISH BY PRICE - 75");
-        System.out.println(orderWrapper.getDishByPrice(75));
+        System.out.println("SELECT DISH BY PRICE - 80");
+        System.out.println(orderWrapper.getDishByPrice(80));
 
         System.out.println("SELECT DISH BY WEIGHT - 250");
         System.out.println(orderWrapper.getDishByWeight(250));

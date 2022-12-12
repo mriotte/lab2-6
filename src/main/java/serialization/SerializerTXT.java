@@ -95,10 +95,10 @@ public class SerializerTXT implements Serializer{
         employee.setGender(Employee.Gender.female);
         employee.setBirthDate(LocalDate.of(2003, 10, 14));
         Serializer serializer = new SerializerTXT();
-        //serializer.toFile(employee, "employeeTXT");
+        serializer.toFile(employee, "employeeTXT");
 
 
-        /*List<Employee> employees = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
         employees.add(employee);
         employee = new Employee();
         employee.setFullName("Mariia");
@@ -106,11 +106,11 @@ public class SerializerTXT implements Serializer{
         employee.setGender(Employee.Gender.female);
         employee.setBirthDate(LocalDate.of(2003, 10, 14));
         employees.add(employee);
-        serializer.listToFile(employees, "employeesTXT");*/
+        serializer.listToFile(employees, "employeesTXT");
 
         employee = serializer.fromFile("employeeTXT");
         System.out.println(employee);
-        //employees = serializer.listFromFile("lastSeeingPlacesTXT");
-        //System.out.println(employees);*/
+        employees = serializer.listFromFile("employeesTXT");
+        System.out.println(employees);
     }
 }

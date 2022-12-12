@@ -8,6 +8,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lab1.classes.Employee;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SerializerXML implements Serializer{
@@ -61,23 +63,25 @@ public class SerializerXML implements Serializer{
     public static void main(String args[]) {
 
         Employee employee = new Employee();
-        employee.setFullName("Mariia");
-        employee.setPosition("Admin");
+        employee.setFullName("Mariia Venhryniuk");
+        employee.setPosition("administrator");
+        employee.setGender(Employee.Gender.female);
+        employee.setBirthDate(LocalDate.of(2003, 10, 14));
         Serializer serializer = new SerializerXML();
         serializer.toFile(employee, "employeeXML");
 
-       /* List<Employee> employees = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
         employees.add(employee);
         employee = new Employee();
         employee.setFullName("Mariia");
         employee.setPosition("Director");
         employees.add(employee);
-        serializer.listToFile(employees, "employeeXML");*/
+        serializer.listToFile(employees, "employeesXML");
 
         employee = serializer.fromFile("employeeXML");
         System.out.println(employee);
-        //employees = serializer.listFromFile("employeesXML");
-        //System.out.println(employees);
+        employees = serializer.listFromFile("employeesXML");
+        System.out.println(employees);
     }
 
 }

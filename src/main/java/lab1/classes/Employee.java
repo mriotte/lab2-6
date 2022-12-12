@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class Employee implements Comparable<Employee>{
 
-    @Pattern(regexp = "[A-Z][a-z]{1,100}", message = "Full name must consists only letters and first of them must started with UpperCase and word must consist only 32 letters")
+    @Pattern(regexp = "^([A-Z][a-z]*((\\s)))+[A-Z][a-z]*$", message = "Full name must consists only letters and first of them must started with UpperCase")
     protected String fullName;
     @Pattern(regexp = "[A-Z][a-z]{1,32}", message = "Position must consists only from letter and first letter must be UpperCase and word must consist only 32 letters")
     protected String position;
@@ -169,7 +169,7 @@ public class Employee implements Comparable<Employee>{
          * @return returns new object of class "Employee"
          */
         public Employee build(){
-           // validate(employee);
+            validate(employee);
             return employee;
         }
     }
@@ -195,7 +195,7 @@ public class Employee implements Comparable<Employee>{
     public static void main(String args[]){
         try{
             Employee e = new Employee.Builder()
-                    .setFullName("ma3riia")
+                    .setFullName("mariia")
                     .setPosition("s3n4j4k")
                     .setBirthDate(LocalDate.of(2022, 12, 29))
                     .build();

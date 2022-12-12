@@ -155,13 +155,33 @@ public class OrderWrapper extends DBManager {
     {
         return getEmployeesByQuery("SELECT * FROM Employee");
     }
-
     public List<Employee> getEmployeesByFullName(String fullName) {
-        return getEmployeesByQuery("SELECT * FROM Employee WHERE fullName = '" + fullName + "'");
-    }
+        List<Employee> result = new ArrayList<>();
+        try{PreparedStatement statement = connection.prepareStatement(" SELECT * FROM employee WHERE fullName LIKE ? ");
+            statement.setString( 1, fullName);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                result.add(getEmployee(set));
+            }
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        return result;
+
+        }
 
     public List<Employee> getEmployeesByPosition(String position) {
-        return getEmployeesByQuery("SELECT * FROM Employee WHERE position = '" + position + "'");
+        List<Employee> result = new ArrayList<>();
+        try{PreparedStatement statement = connection.prepareStatement(" SELECT * FROM employee WHERE position LIKE ? ");
+            statement.setString( 1, position);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                result.add(getEmployee(set));
+            }
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        return result;
     }
 
     public Employee getEmployeeById(int id) {
@@ -171,7 +191,17 @@ public class OrderWrapper extends DBManager {
         return result.get(0);
     }
     public List<Employee> getEmployeesByGender(String gender) {
-        return getEmployeesByQuery("SELECT * FROM Employee WHERE gender = '" + gender + "'");
+        List<Employee> result = new ArrayList<>();
+        try{PreparedStatement statement = connection.prepareStatement(" SELECT * FROM employee WHERE gender LIKE ? ");
+            statement.setString( 1, gender);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                result.add(getEmployee(set));
+            }
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        return result;
     }
 
     ///////////////////////////////////////////////
@@ -193,6 +223,7 @@ public class OrderWrapper extends DBManager {
         return getDishesByQuery("SELECT * FROM dish");
     }
     public Dish getDishById(int id) {
+
         List<Dish> result = getDishesByQuery("SELECT * FROM Dish WHERE id = '" + id + "'");
         if (result.isEmpty())
             return null;
@@ -200,11 +231,31 @@ public class OrderWrapper extends DBManager {
     }
 
     public List<Dish> getDishByDishName(String dishName) {
-        return getDishesByQuery("SELECT * FROM Dish WHERE dishName = '" + dishName + "'");
+        List<Dish> result = new ArrayList<>();
+        try{PreparedStatement statement = connection.prepareStatement(" SELECT * FROM dish WHERE dishName LIKE ? ");
+            statement.setString( 1, dishName);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                result.add(getDish(set));
+            }
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        return result;
     }
 
     public List<Dish> getDishByDishGroup(String dishGroup) {
-        return getDishesByQuery("SELECT * FROM Dish WHERE dishGroup = '" + dishGroup + "'");
+        List<Dish> result = new ArrayList<>();
+        try{PreparedStatement statement = connection.prepareStatement(" SELECT * FROM dish WHERE dishGroup LIKE ? ");
+            statement.setString( 1, dishGroup);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                result.add(getDish(set));
+            }
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        return result;
     }
     public Dish getDishByPrice(int price) {
         List<Dish> result = getDishesByQuery("SELECT * FROM Dish WHERE price = '" + price + "'");
@@ -245,7 +296,17 @@ public class OrderWrapper extends DBManager {
         return result.get(0);
     }
     public List<Order> getOrdersByType(String type) {
-        return getOrdersByQuery("SELECT * FROM Orders WHERE type = '" + type + "'");
+        List<Order> result = new ArrayList<>();
+        try{PreparedStatement statement = connection.prepareStatement(" SELECT * FROM orders WHERE type LIKE ? ");
+            statement.setString( 1, type);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                result.add(getOrder(set));
+            }
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+        return result;
     }
     public Order getOrderByTableNumber(int tableNumber) {
         List<Order> result = getOrdersByQuery("SELECT * FROM Orders WHERE tableNumber = '" + tableNumber + "'");
